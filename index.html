@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        table { width: 100%; border-collapse: collapse; }
+        td { padding: 8px; border: 1px solid #ddd; vertical-align: top; }
+    </style>
+    <script>
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                document.getElementById('activity-5').style.display = 'none';
+                document.getElementById('activity-1').style.display = 'none';
+            }
+        }
+
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="header">
+    <h1>Playbook - H2 - M14.5</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+<!-- Actividad 1 -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('saludo_ritual')">
+        <div class="title">🎉 Actividad 1: Saludo y Ritual Gnius Club ⏰ Tiempo: 2.5 minutos</div>
+        <div class="subtitle">Saludar a los genios y preparar el ambiente para el aprendizaje.</div>
+    </div>
+    <div id="saludo_ritual" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 2 "Bienvenida".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Hola, Genios! Continuaremos nuestro progreso en Glide configurando las pantallas restantes de nuestra app de tareas familiares. Prepárense, porque cada detalle cuenta para que sea clara y funcional. ¡Vamos a darle con todo!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 3 "¿Cómo están?".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Antes de arrancar, quiero saber cómo se sienten hoy. Si están listos para montar su app en Glide, levanten la mano bien alto. Si prefieren un momento más para tomar ritmo, dejen las manos apoyadas sobre la mesa y respiren profundo."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 4 "Gracias por Asistir".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Como siempre, juntemos las manos en agradecimiento por esta oportunidad de aprender algo nuevo. Cada sesión es una pieza más en el rompecabezas de sus habilidades. ¡Gracias por estar aquí, Genios!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (0.5 minutos):</strong> Proyectar Diapositiva 5 "Objetivos de la Misión".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy tenemos un único objetivo: configurar la pantalla de inicio de nuestra app en Glide, mostrando tareas pendientes, próximas a vencer y completadas, usando gráficos y barras de progreso para lograr una vista funcional y clara. 1. Montar y configurar en Glide el resto de las pantallas de nuestra aplicación. 2. Crear una pantalla para crear tareas y editarlas."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 2 -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('state_change')">
+        <div class="title">🧘‍♂️ Actividad 2: State Change ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Ejercicio breve para recargar energías y mejorar la concentración.</div>
+    </div>
+    <div id="state_change" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 6 "Respiración de Abeja".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Para enfocar nuestras mentes, haremos la respiración de abeja. Esta técnica ayuda a despejar pensamientos dispersos y canalizar la concentración. Recuerden que estas técnicas no son exclusivas para Gnius Club, sino que pueden usarlas en cualquier momento de sus vidas. Inhalaremos profundamente y exhalaremos con calma en tres ocasiones. Veamos cómo hacerlo."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 7 "Cronómetro - 1 Minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 8 "Respiración de Abeja - Avanzada".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Vamos a hacer una variación más. Cubre tus ojos con los dedos índice y medio, y tapa tus oídos con los pulgares. Al exhalar, haz un 'OHM' prolongado. Hazlo lo más lento y duradero que puedas. Esta versión ayuda a aislar distracciones externas y mejorar la salud cardíaca. Lo haremos tres veces y después tomaremos asiento ya relajados."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 3 -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('team_gnius')">
+        <div class="title">🤝 Actividad 3: Team Gnius ⏰ Tiempo: 1.5 minutos</div>
+        <div class="subtitle">Formación de parejas para trabajar en la misión.</div>
+    </div>
+    <div id="team_gnius" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 9 "Formación de Parejas".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy trabajarán con las mismas parejas de las sesiones anteriores. Aprovechen esta oportunidad para mejorar la dinámica entre ustedes. Tienen un minuto para reunirse y alinear su estrategia de trabajo."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 10 "Cronómetro - 1 Minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 4 -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">🏆 Actividad 4: Challenge ⏰ Tiempo: 34.5 minutos</div>
+        <div class="subtitle">Implementación de pantallas en Glide.</div>
+    </div>
+    <div id="challenge" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 11 "Challenge - Título".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "El desafío de hoy es implementar en Glide las pantallas que diseñaron previamente. Necesitarán usar todos los elementos esenciales para asegurarse de que funcione bien tanto en web como en móviles. Empiecen desde cero con una 'Custom Screen' y empiecen a construir desde ahí sus pantallas. Recuerden que son libres de crear la aplicación como más les guste, pero todos deben tener al menos una pantalla donde los usuarios puedan crear o modificar tareas."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (0.5 minutos):</strong> Proyectar Diapositiva 12 "Verificación de Vistas".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Recuerden alternar entre las vistas web y móvil para que su diseño se adapte a ambas plataformas. Ajusten cualquier detalle que no encaje y asegúrense de que la información se vea clara en ambos entornos."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (30 minutos):</strong> Proyectar Diapositiva 13 "Cronómetro - 30 Minutos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (0.5 minutos):</strong> Proyectar Diapositiva 14 "Compartir Diseños".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Vamos a revisar el progreso de nuestro trabajo con la ayuda de nuestros compañeros. Quiero que se reúnan con una pareja que NO sea la misma con la que diseñaron sus datos. Quiero que comparemos las diferentes perspectivas, diseños e ideas para crear una misma app. Van a tener 3 minutos para compartir sus pantallas y platicar sobre por qué eligieron incluir las que tienen, así de qué elementos eligieron y cómo consideran que ellos a su vez mejoran la experiencia de usuario."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 5 (3 minutos):</strong> Proyectar Diapositiva 15 "Tiempo de Presentación".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 6 (0.5 minutos):</strong> Proyectar Diapositiva 16 "Revisión de Objetivos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy cumplimos con éxito el objetivo de implementar nuestras pantallas en Glide, asegurando que funcionen correctamente en todas las plataformas."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 7 (0.5 minutos):</strong> Proyectar Diapositiva 17 "You've got Mon-e".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Felicidades, Genios! Han hecho un excelente trabajo montando sus apps. Como recompensa, se llevan Mon-e por su dedicación y compromiso en cada paso del proceso."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 5 -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('honor_dojo')">
+        <div class="title">🎖️ Actividad 5: Honor de Dojo ⏰ Tiempo: 0.5 minutos</div>
+        <div class="subtitle">Despedida y devolución de materiales al finalizar la misión.</div>
+    </div>
+    <div id="honor_dojo" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 18 "Honor de Dojo".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hemos llegado al final de nuestra misión de hoy. Antes de salir, cada equipo debe devolver las Magic Tablets. Gracias por su enfoque, creatividad y esfuerzo en esta sesión. ¡Nos vemos en la próxima misión!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+</div>
+
+</body>
+</html>
